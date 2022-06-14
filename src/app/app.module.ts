@@ -1,3 +1,5 @@
+import { PrimengModule } from './primeng.module';
+import { LayoutComponent } from './shared/components/layout/layout.component';
 import { environment } from './../environments/environment';
 
 import { TrackingModule } from './tracking/tracking.module'
@@ -18,7 +20,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { AppRoutingModule } from './app-routing.module';
     AuthCenterModule.forRoot(environment.auth),
     AppRoutingModule,
 
+    PrimengModule,
     TrackingModule,
 
     StoreModule.forRoot({}),

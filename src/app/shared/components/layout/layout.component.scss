@@ -1,0 +1,86 @@
+// ---------------- Navbar ---------------
+
+.navbar {
+  padding: 10px 0;
+  background-color: #E5F0FF;
+  height: 70px;
+
+  .logo {
+    // margin-left: 10px;
+    // float: right;
+    // text-align: center;
+
+    img {
+      width: 67px;
+      height: 56px;
+      float: left;
+      margin-right: 20px;
+    }
+
+    a {
+      float: left;
+      text-align: center;
+      padding: 12px;
+      text-decoration: none;
+      font-size: 22px;
+      line-height: 25px;
+      border-radius: 0px;
+
+      padding: 15px 25px;
+      border-left: 2px solid #ddd;
+      border-right: 2px solid #ddd;
+
+      display: block;
+      color: #0043A4;
+      cursor: pointer;
+
+      &:hover {
+        color: #6b6b6b;
+        text-decoration: none !important;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .logo {
+      margin-left: 50px;
+    }
+  }
+  @media (min-width: 992px) {
+    .logo {
+      margin-left: 200px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .logo {
+      margin-left: 550px;
+    }
+  }
+
+}
+
+.header-user {
+  text-align: right;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 37px;
+  border-radius: 0px;
+
+  .fio_user {
+    margin: auto;
+    width: 50%;
+    padding: 15px 25px;
+    border-left: 2px solid #ddd;
+  }
+}
+
+// ---------------- Menubar ---------------
+
+::ng-deep .p-menubar {
+  height: 50px;
+
+  p-menubarsub {
+    position: absolute;
+    left: 100px;
+  }
+}

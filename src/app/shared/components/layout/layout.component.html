@@ -1,0 +1,27 @@
+<nav class="navbar">
+  <div class="">
+    <div class="logo">
+      <img src="assets/images/logo_iss.png">
+      <a routerLink="/"> Сервис отслеживания почтовых отправлений </a>
+    </div>
+
+    <div class="header-user" *ngIf="isAuthenticated">
+      <span class="fio_user"> {{ fio_initials }} </span>
+
+      <p-button
+        icon="pi pi-sign-out"
+        styleClass="p-button-text p-button-plain"
+        (click)="logout()"
+      ></p-button>
+
+    </div>
+
+  </div>
+</nav>
+
+<p-menubar [model]="items" [style]="{'background-color': '#7AB1FF'}">
+</p-menubar>
+
+<router-outlet></router-outlet>
+
+<!-- <span class="footer"></span> -->

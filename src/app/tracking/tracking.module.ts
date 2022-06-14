@@ -1,3 +1,4 @@
+import { PrimengModule } from './../primeng.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -18,8 +19,10 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    PrimengModule
   ],
+  exports: [PrimengModule],
   declarations: [
   ]
 })
