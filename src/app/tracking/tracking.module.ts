@@ -1,3 +1,9 @@
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { GetListsEffect } from './store/effects/get-lists.effect';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { ListService } from './services/list.service';
 import { PrimengModule } from './../primeng.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -6,6 +12,10 @@ import { CommonModule } from '@angular/common';
 import { ListComponent } from './components/list/list.component';
 
 import { AuthCenterGuard } from '@iss/ng-auth-center';
+import { reducers } from './store/reducers';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+// import { TableModule } from 'primeng/table';
 
 const routes: Routes = [
   {
@@ -19,11 +29,26 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
-    PrimengModule
+    HttpClientModule,
+
+    // PrimengModule,
+
+    BrowserModule,
+
+    StoreModule.forFeature('list', reducers),
+    EffectsModule.forFeature(
+      [
+        GetListsEffect
+      ]
+    ),
   ],
   exports: [PrimengModule],
   declarations: [
+  ],
+  providers: [
+    ListService
   ]
 })
 export class TrackingModule { }

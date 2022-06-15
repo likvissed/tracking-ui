@@ -1,4 +1,9 @@
-import { PrimengModule } from './primeng.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthCenterModule } from '@iss/ng-auth-center';
+import { AppRoutingModule } from './app-routing.module';
+
+import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
+// import { PrimengModule } from './primeng.module';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { environment } from './../environments/environment';
 
@@ -13,9 +18,12 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { HttpClientModule } from '@angular/common/http';
-import { AuthCenterModule } from '@iss/ng-auth-center';
-import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+
+import { ButtonModule } from 'primeng/button';
+import { MenuModule } from 'primeng/menu';
+import { TableModule } from 'primeng/table';
+import { MenubarModule } from 'primeng/menubar';
 
 
 @NgModule({
@@ -24,13 +32,15 @@ import { AppRoutingModule } from './app-routing.module';
     LayoutComponent
   ],
   imports: [
-    BrowserModule,
-
     HttpClientModule,
     AuthCenterModule.forRoot(environment.auth),
     AppRoutingModule,
 
-    PrimengModule,
+    BrowserModule,
+    FormsModule,
+
+    // PrimengModule,
+    ButtonModule, MenubarModule, MenuModule, TableModule,
     TrackingModule,
 
     StoreModule.forRoot({}),
@@ -41,7 +51,13 @@ import { AppRoutingModule } from './app-routing.module';
     })
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
