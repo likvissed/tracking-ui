@@ -9,8 +9,6 @@
 
 <div class="container">
   <div class="row">
-
-
     <p-table
       #dt
       *ngIf="lists"
@@ -18,10 +16,12 @@
       [lazy]="true"
       [lazyLoadOnInit]="true"
       (onLazyLoad)="loadData($event)"
-      [rows]="10"
+      [rows]="15"
       [paginator]="true"
       [totalRecords]="totalRecords"
       tableStyleClass="prime-table"
+      styleClass="p-datatable-sm"
+      [loading]="(isSubmitting$ | async)!"
     >
 
       <ng-template pTemplate="caption">
@@ -38,6 +38,7 @@
               <th> Получатель</th>
               <th> Адрес получучателя </th>
               <th width="15%"> Последнее действие</th>
+              <th></th>
           </tr>
 
 
@@ -78,7 +79,7 @@
                 panelStyleClass="p-dropdown"
               >
                 <ng-template let-option pTemplate="item">
-                  <span [class]="">{{option.type}}</span>
+                  <span [class]="'dropdown-selected'"> {{option.type}}</span>
                 </ng-template>
               </p-dropdown>
             </th>
@@ -133,6 +134,7 @@
                 class="form-control col-lg-11"
               >
             </th>
+            <th></th>
 
           </tr>
 
@@ -142,16 +144,28 @@
               <td>{{i + 1}}</td>
               <td
                 [innerHtml]="list.delivered | nameForStatus"
-
                 class=" list-badge status-0"
+                style="text-align:center"
               >
               </td>
-              <td>{{list.type}}</td>
+              <td style="text-align:center">{{list.type}}</td>
               <td>{{list.order}}</td>
               <td>{{list.barcode}}</td>
               <td>{{list.recipient}}</td>
               <td>{{list.address}}</td>
               <td>{{list.last_operattr}}</td>
+              <td style="text-align:center">
+                <button
+                  pButton
+                  pRipple type="button"
+                  icon="pi pi-eye"
+                  (click)="onShowHistory(list.id)"
+                  class="p-button-rounded p-button-text"
+                  pTooltip="Посмотреть все действия"
+                  tooltipPosition="top"
+                ></button>
+            </td>
+
           </tr>
       </ng-template>
 

@@ -1,0 +1,12 @@
+<p-timeline [value]="histories">
+  <ng-template pTemplate="content" let-event>
+      <small class="p-text-secondary">{{event.operationaddress}}</small>
+      <br>
+      <small class="p-text-secondary" style="font-size: 12px;"> ({{event.index}}) </small>
+  </ng-template>
+  <ng-template pTemplate="opposite" let-event>
+      {{event.operattr}}
+      <br>
+      <small class="p-text-secondary">{{event.operdate | date: 'dd.MM.yyyy hh:mm' : 'Asia/Krasnoyarsk' }}</small>
+  </ng-template>
+</p-timeline>

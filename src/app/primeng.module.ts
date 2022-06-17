@@ -7,7 +7,9 @@ import { MenubarModule } from 'primeng/menubar';
 import { BadgeModule } from 'primeng/badge';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
-
+import { TooltipModule } from 'primeng/tooltip';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { TimelineModule } from 'primeng/timeline';
 
 const modules: any[] = [
   ButtonModule,
@@ -16,7 +18,10 @@ const modules: any[] = [
   TableModule,
   BadgeModule,
   DropdownModule,
-  MultiSelectModule
+  MultiSelectModule,
+  TooltipModule,
+  DynamicDialogModule,
+  TimelineModule
 
 ];
 

@@ -27,6 +27,8 @@ import { MenubarModule } from 'primeng/menubar';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { DialogService } from 'primeng/dynamicdialog';
+
 
 @NgModule({
   declarations: [
@@ -59,7 +61,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
       multi: true
-    }
+    },
+    DialogService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,5 @@
-import { getListsAction, getListsSuccessAction, getListsFailureAction } from './../actions/get_lists.action';
+import { getHistoryAction, getHistorySuccessAction, getHistoryFailureAction } from './../actions/get-history.action';
+
 import { TrackingService } from '../../services/tracking.service';
 
 import { catchError, map, switchMap } from 'rxjs/operators';
@@ -9,7 +10,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 
 @Injectable()
-export class GetListsEffect {
+export class GetHistoryEffect {
   constructor(
     private actions$: Actions,
     private trackingService: TrackingService
@@ -17,17 +18,17 @@ export class GetListsEffect {
 
   get$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getListsAction),
-      switchMap((value) => {
-        console.log('EFFECT', value);
-        return this.trackingService.getListTrackings(value.data).pipe(
+      ofType(getHistoryAction),
+      switchMap(({id}) => {
+        console.log('EFFECT id', id);
+        return this.trackingService.getHistoryTrackings(id).pipe(
           map((response: any) => {
-            console.log('get lists Success:', response);
-            return getListsSuccessAction({response});
+            console.log('get history Success:', response);
+            return getHistorySuccessAction({response});
           }),
 
           catchError((errorResponse: HttpErrorResponse) => of(
-            getListsFailureAction({error: errorResponse.error.message})
+            getHistoryFailureAction({error: errorResponse.error.message})
           ))
         )
       })

@@ -1,9 +1,9 @@
-import { environment } from './../../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 
 @Injectable()
-export class ListService {
+export class TrackingService {
   constructor(
     private http: HttpClient
   ) {}
@@ -13,5 +13,11 @@ export class ListService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this.http.get(url,  { headers: headers, params: data });
+  }
+
+  getHistoryTrackings(id: number) {
+    const url = `${environment.apiUrl}/track_history`;
+
+    return this.http.get(`${url}?id=${id}`)
   }
 }

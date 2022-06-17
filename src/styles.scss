@@ -110,12 +110,16 @@ th, td {
   text-transform: capitalize;
 }
 
+.dropdown-selected {
+  font-size: 14px;
+}
+
 .list-badge {
   border-radius: 2px;
   padding: 0.25em 0.5rem;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 14px;
+  // font-size: 14px;
   letter-spacing: 0.3px;
   font-size: 75%;
 
@@ -153,6 +157,11 @@ th, td {
   // min-width: 971px;
 }
 
+// pTooltip
+.p-tooltip>.p-tooltip-text {
+  // width: 350px !important;
+  font-size: 14px;
+}
 
 // ----------------------------Шапка, навигация и футер---------------------------------------
 

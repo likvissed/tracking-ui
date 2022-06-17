@@ -1,10 +1,12 @@
+import { GetHistoryEffect } from './store/effects/get-history.effect';
+import { HistoryComponent } from './components/history/history.component';
 import { NameForStatusPipe } from './../shared/pipes/name-for-status.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { GetListsEffect } from './store/effects/get-lists.effect';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { ListService } from './services/list.service';
+import { TrackingService } from './services/tracking.service';
 import { PrimengModule } from '../primeng.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -36,16 +38,18 @@ const routes: Routes = [
     StoreModule.forFeature('list', reducers),
     EffectsModule.forFeature(
       [
-        GetListsEffect
+        GetListsEffect,
+        GetHistoryEffect
       ]
     ),
   ],
   declarations: [
     ListComponent,
-    NameForStatusPipe
+    NameForStatusPipe,
+    HistoryComponent
   ],
   providers: [
-    ListService
+    TrackingService
   ]
 })
 export class TrackingModule { }

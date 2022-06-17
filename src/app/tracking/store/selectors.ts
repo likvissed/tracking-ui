@@ -13,3 +13,14 @@ export const allListsSelector = createSelector(
     return userState.lists;
   }
 )
+
+export const isSubmittingSelector = createSelector(
+  listFeatureSelector,
+  (userState: any) => userState.isSubmitting
+)
+
+
+export const idHistorySelector = createSelector(
+  listFeatureSelector,
+  (userState: any) => userState.histories
+)
