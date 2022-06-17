@@ -12,7 +12,7 @@ export const environment = {
     serverUrl: 'https://vm713.***REMOVED***:24062/auth/token',
     appName: 'tracking-ui (dev)',
     jwtOptions: {
-      allowedDomains: ['localhost.***REMOVED***:24062'],
+      allowedDomains: ['vm713.***REMOVED***:24062'],
       disallowedRoutes: []
     }
   },

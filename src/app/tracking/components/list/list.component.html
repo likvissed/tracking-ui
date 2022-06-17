@@ -1,19 +1,168 @@
-=== {{ lists$  }} ===
+<!-- === {{ lists$  }} === -->
+<!-- === {{ books }} === -->
+<!-- <pre>
+  | {{ books | json }}
+</pre> -->
+
+<!-- <button pButton label="Test Me" class="p-button p-component"></button> -->
+<!-- <p-button label="Click" ></p-button> -->
+
+<div class="container">
+  <div class="row">
 
 
-<!-- <p-table [value]="books">
-  <ng-template pTemplate="header">
-      <tr>
-          <th>Name</th>
-          <th>Author</th>
-          <th>Price In Dollars</th>
-      </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-book>
-      <tr>
-          <td>{{book.name}}</td>
-          <td>{{book.author}}</td>
-          <td>{{book.price}}</td>
-      </tr>
-  </ng-template>
-</p-table> -->
+    <p-table
+      #dt
+      *ngIf="lists"
+      [value]="lists"
+      [lazy]="true"
+      [lazyLoadOnInit]="true"
+      (onLazyLoad)="loadData($event)"
+      [rows]="10"
+      [paginator]="true"
+      [totalRecords]="totalRecords"
+      tableStyleClass="prime-table"
+    >
+
+      <ng-template pTemplate="caption">
+        Список треков
+      </ng-template>
+
+      <ng-template pTemplate="header" let-column>
+          <tr>
+              <th> № </th>
+              <th> Статус </th>
+              <th> Тип отправления</th>
+              <th> Исходящий №</th>
+              <th> Трек</th>
+              <th> Получатель</th>
+              <th> Адрес получучателя </th>
+              <th width="15%"> Последнее действие</th>
+          </tr>
+
+
+          <tr>
+            <th>
+            </th>
+            <th>
+              <p-dropdown
+                *ngIf="user_is_admin"
+
+                [options]="filters.statuses"
+                optionValue="id"
+                (onChange)="dt.filter($event.value, 'delivered', 'equals')"
+                placeholder="Все статусы"
+                [showClear]="true"
+                optionLabel="name"
+                [style]="{'width':'100%'}"
+                panelStyleClass="p-dropdown"
+                >
+                <!-- (onChange)="dt.filter($event.value, 'delivered', 'equals'); table.saveState()" -->
+                <ng-template let-option pTemplate="item">
+                  <span [class]="'list-badge status-' + option.delivered">{{option.name}}</span>
+                </ng-template>
+              </p-dropdown>
+            </th>
+            <th>
+              <p-dropdown
+                *ngIf="user_is_admin"
+
+                [options]="filters.types"
+                optionValue="type"
+                (onChange)="dt.filter($event.value, 'type', 'equals')"
+                styleClass="p-column-filter"
+                placeholder="Все типы"
+                [showClear]="true"
+                optionLabel="type"
+                [style]="{'width':'100%'}"
+                panelStyleClass="p-dropdown"
+              >
+                <ng-template let-option pTemplate="item">
+                  <span [class]="">{{option.type}}</span>
+                </ng-template>
+              </p-dropdown>
+            </th>
+            <th>
+              <input pInputText
+                type="text"
+                (input)="dt.filter($any($event.target)?.value, 'order', 'contains')"
+                [value]="$any(dt.filters['order'])?.value"
+                placeholder="№"
+                class="form-control col-lg-12"
+              >
+            </th>
+            <th>
+              <input pInputText
+                type="text"
+                (input)="dt.filter($any($event.target)?.value, 'barcode', 'contains')"
+                [value]="$any(dt.filters['barcode'])?.value"
+                placeholder="Трек номер"
+                class="form-control col-lg-11"
+              >
+            </th>
+            <th>
+              <input pInputText
+                *ngIf="user_is_admin"
+
+                type="text"
+                (input)="dt.filter($any($event.target)?.value, 'recipient', 'contains')"
+                [value]="$any(dt.filters['recipient'])?.value"
+                placeholder="Получатель"
+                class="form-control col-lg-11"
+              >
+            </th>
+            <th>
+              <input pInputText
+                *ngIf="user_is_admin"
+
+                type="text"
+                (input)="dt.filter($any($event.target)?.value, 'address', 'contains')"
+                [value]="$any(dt.filters['address'])?.value"
+                placeholder="Адрес"
+                class="form-control col-lg-11"
+              >
+            </th>
+            <th>
+              <input pInputText
+                *ngIf="user_is_admin"
+
+                type="text"
+                (input)="dt.filter($any($event.target)?.value, 'last_operattr', 'contains')"
+                [value]="$any(dt.filters['last_operattr'])?.value"
+                placeholder="Действие"
+                class="form-control col-lg-11"
+              >
+            </th>
+
+          </tr>
+
+      </ng-template>
+      <ng-template pTemplate="body" let-list let-i="rowIndex">
+          <tr>
+              <td>{{i + 1}}</td>
+              <td
+                [innerHtml]="list.delivered | nameForStatus"
+
+                class=" list-badge status-0"
+              >
+              </td>
+              <td>{{list.type}}</td>
+              <td>{{list.order}}</td>
+              <td>{{list.barcode}}</td>
+              <td>{{list.recipient}}</td>
+              <td>{{list.address}}</td>
+              <td>{{list.last_operattr}}</td>
+          </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8"> Не найдено </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </div>
+
+
+</div>

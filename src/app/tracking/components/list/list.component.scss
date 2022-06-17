@@ -1,0 +1,18 @@
+.table-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.p-dropdown-item {
+  padding: 20 !important;
+  margin: 0 10 !important;
+}
+
+.p-dropdown-items {
+  p-dropdownitem + p-dropdownitem {
+    .p-dropdown-item {
+      border-top: 1px solid var(--surface-d);
+    }
+  }
+}

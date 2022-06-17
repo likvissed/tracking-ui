@@ -1,14 +1,13 @@
 // ---------------- Navbar ---------------
 
-.navbar {
-  padding: 10px 0;
+.navbar{
   background-color: #E5F0FF;
   height: 70px;
+}
 
-  .logo {
-    // margin-left: 10px;
-    // float: right;
-    // text-align: center;
+.logo {
+  float: right;
+  text-align: center;
 
     img {
       width: 67px;
@@ -22,13 +21,13 @@
       text-align: center;
       padding: 12px;
       text-decoration: none;
-      font-size: 22px;
+      font-size: 18px;
       line-height: 25px;
       border-radius: 0px;
 
       padding: 15px 25px;
-      border-left: 2px solid #ddd;
-      border-right: 2px solid #ddd;
+      border-left: 1px solid #ddd;
+      border-right: 1px solid #ddd;
 
       display: block;
       color: #0043A4;
@@ -39,48 +38,55 @@
         text-decoration: none !important;
       }
     }
-  }
-
-  @media (min-width: 768px) {
-    .logo {
-      margin-left: 50px;
-    }
-  }
-  @media (min-width: 992px) {
-    .logo {
-      margin-left: 200px;
-    }
-  }
-  @media (min-width: 1200px) {
-    .logo {
-      margin-left: 550px;
-    }
-  }
-
 }
 
-.header-user {
-  text-align: right;
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 37px;
-  border-radius: 0px;
-
-  .fio_user {
-    margin: auto;
-    width: 50%;
-    padding: 15px 25px;
-    border-left: 2px solid #ddd;
+@media (min-width: 768px) {
+  .logo {
+    margin-left: 50px;
   }
+}
+@media (min-width: 992px) {
+  .logo {
+    margin-left: 150px;
+  }
+}
+@media (min-width: 1200px) {
+  .logo {
+    margin-left: 550px;
+  }
+}
+
+.fio_user {
+  // margin: auto;
+  // width: 100%;
+  padding: 15px 25px;
+  // border-left: 2px solid #ddd;
 }
 
 // ---------------- Menubar ---------------
 
 ::ng-deep .p-menubar {
   height: 50px;
+  background-color: #7AB1FF !important;
 
   p-menubarsub {
     position: absolute;
-    left: 100px;
+    left: 310px;
   }
+
+  .p-menuitem-text, .p-menuitem-icon, .p-submenu-icon {
+    color: rgb(0, 0, 0) !important;
+  }
+  // .p-menu-list {
+  //   background-color: red !important;
+  // }
+  // .p-menuitem {
+  //     background-color: green !important;
+  // }
+  // .p-menu-list:hover {
+  //     background-color: rgb(255, 255, 255) !important;
+  // }
+  // .p-menuitem:hover {
+  //     background-color: #000 !important;
+  // }
 }

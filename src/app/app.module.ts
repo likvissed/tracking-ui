@@ -3,7 +3,7 @@ import { AuthCenterModule } from '@iss/ng-auth-center';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
-// import { PrimengModule } from './primeng.module';
+import { PrimengModule } from './primeng.module';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { environment } from './../environments/environment';
 
@@ -25,6 +25,8 @@ import { MenuModule } from 'primeng/menu';
 import { TableModule } from 'primeng/table';
 import { MenubarModule } from 'primeng/menubar';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -32,15 +34,16 @@ import { MenubarModule } from 'primeng/menubar';
     LayoutComponent
   ],
   imports: [
+    BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
+
     HttpClientModule,
     AuthCenterModule.forRoot(environment.auth),
     AppRoutingModule,
 
-    BrowserModule,
-    FormsModule,
-
-    // PrimengModule,
-    ButtonModule, MenubarModule, MenuModule, TableModule,
+    PrimengModule,
+    // ButtonModule, MenubarModule, MenuModule, TableModule,
     TrackingModule,
 
     StoreModule.forRoot({}),

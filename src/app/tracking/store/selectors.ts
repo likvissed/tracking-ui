@@ -7,5 +7,9 @@ export const listFeatureSelector = createFeatureSelector<
 
 export const allListsSelector = createSelector(
   listFeatureSelector,
-  (userState: any) => userState.lists
+  (userState: any) => {
+
+    // console.log('selector', userState);
+    return userState.lists;
+  }
 )

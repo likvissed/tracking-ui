@@ -3,8 +3,8 @@ import { createAction, props } from '@ngrx/store';
 
 
 export const getListsAction = createAction(
-  ActionTypes.GET_LISTS
-  // props<{ lists: any }>()
+  ActionTypes.GET_LISTS,
+  props<{ data: any }>()
 );
 
 export const getListsSuccessAction = createAction(

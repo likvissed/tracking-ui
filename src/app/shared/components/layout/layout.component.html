@@ -1,11 +1,12 @@
 <nav class="navbar">
-  <div class="">
+  <div class="container-fluid">
+
     <div class="logo">
       <img src="assets/images/logo_iss.png">
-      <a routerLink="/"> Сервис отслеживания почтовых отправлений </a>
+      <a routerLink="/" class="navbar-brand"> Сервис отслеживания почтовых отправлений </a>
     </div>
 
-    <div class="header-user" *ngIf="isAuthenticated">
+    <form class="d-flex">
       <span class="fio_user"> {{ fio_initials }} </span>
 
       <p-button
@@ -13,14 +14,12 @@
         styleClass="p-button-text p-button-plain"
         (click)="logout()"
       ></p-button>
-
-    </div>
-
+    </form>
   </div>
 </nav>
-
-<p-menubar [model]="items" [style]="{'background-color': '#7AB1FF'}">
+<p-menubar [model]="items">
 </p-menubar>
+
 
 <router-outlet></router-outlet>
 

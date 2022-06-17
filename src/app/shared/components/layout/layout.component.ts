@@ -33,7 +33,6 @@ export class LayoutComponent implements OnInit {
 
       if (isAuth) {
         this.fio_initials = this.authHelper.getJwtPayload()['fio_initials'];
-        this.user_is_admin = this.authHelper.getJwtPayload()['admin'];
       }
     });
   }
