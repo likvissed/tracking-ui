@@ -37,7 +37,7 @@ export class ListComponent implements OnInit, AfterViewInit {
     private authHelper: AuthHelper,
     private store: Store,
     public dialogService: DialogService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
   ) { }
 
   ngAfterViewInit() {
@@ -98,8 +98,6 @@ export class ListComponent implements OnInit, AfterViewInit {
   }
 
   onShowHistory(id: number) {
-    console.log('id', id);
-
     const ref = this.dialogService.open(HistoryComponent, {
       data: {
         id: id
@@ -107,7 +105,6 @@ export class ListComponent implements OnInit, AfterViewInit {
       header: 'История перемещений',
       width: '70%'
     });
-
   }
 
 }

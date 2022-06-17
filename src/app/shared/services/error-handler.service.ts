@@ -1,30 +1,38 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { AuthHelper } from '@iss/ng-auth-center';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ErrorHandlerService {
-  constructor() {}
+  str_severity = 'error';
+
+  constructor(
+    private messageService: MessageService,
+    private authHelper: AuthHelper
+  ) {}
 
   handleError(error: HttpErrorResponse) {
-    console.error('handleError', error);
+    console.error(error);
 
     switch (error.status) {
       case 422:
-        console.log('Ошибки с сервера', error.error.message);
+        this.messageService.add({severity: this.str_severity, summary: 'Ошибка загрузки данных с сервера', detail: error.error.message});
 
         break;
       case 403:
-        console.log('Доступ запрещен');
+        this.messageService.add({severity: this.str_severity, summary: 'Доступ запрещён'});
+        this.authHelper.logout();
 
         break;
       case 404:
-        console.log('Данные не найдены');
+        this.messageService.add({severity: this.str_severity, summary: 'Данные не найдены'});
 
         break;
       case 500:
-        console.log('Сервер временно недоступен');
+        this.messageService.add({severity: this.str_severity, summary: 'Сервер временно недоступен'});
 
         break;
     }

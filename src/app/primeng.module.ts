@@ -10,6 +10,10 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { TooltipModule } from 'primeng/tooltip';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { TimelineModule } from 'primeng/timeline';
+import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+
 
 const modules: any[] = [
   ButtonModule,
@@ -21,7 +25,10 @@ const modules: any[] = [
   MultiSelectModule,
   TooltipModule,
   DynamicDialogModule,
-  TimelineModule
+  TimelineModule,
+  MessagesModule,
+  MessageModule,
+  ToastModule
 
 ];
 

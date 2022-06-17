@@ -1,11 +1,3 @@
-<!-- === {{ lists$  }} === -->
-<!-- === {{ books }} === -->
-<!-- <pre>
-  | {{ books | json }}
-</pre> -->
-
-<!-- <button pButton label="Test Me" class="p-button p-component"></button> -->
-<!-- <p-button label="Click" ></p-button> -->
 
 <div class="container">
   <div class="row">
@@ -30,15 +22,15 @@
 
       <ng-template pTemplate="header" let-column>
           <tr>
-              <th> № </th>
-              <th> Статус </th>
-              <th> Тип отправления</th>
-              <th> Исходящий №</th>
-              <th> Трек</th>
-              <th> Получатель</th>
-              <th> Адрес получучателя </th>
+              <th width="1%"> № </th>
+              <th width="5%"> Статус </th>
+              <th width="5%"> Тип отправления</th>
+              <th width="15%"> Исходящий №</th>
+              <th width="15%"> Трек</th>
+              <th width="15%"> Получатель</th>
+              <th width="15%"> Адрес получучателя </th>
               <th width="15%"> Последнее действие</th>
-              <th></th>
+              <th width="1%"></th>
           </tr>
 
 
@@ -58,13 +50,13 @@
                 [style]="{'width':'100%'}"
                 panelStyleClass="p-dropdown"
                 >
-                <!-- (onChange)="dt.filter($event.value, 'delivered', 'equals'); table.saveState()" -->
+
                 <ng-template let-option pTemplate="item">
                   <span [class]="'list-badge status-' + option.delivered">{{option.name}}</span>
                 </ng-template>
               </p-dropdown>
             </th>
-            <th>
+            <th width="15%">
               <p-dropdown
                 *ngIf="user_is_admin"
 
@@ -83,7 +75,7 @@
                 </ng-template>
               </p-dropdown>
             </th>
-            <th>
+            <th width="15%">
               <input pInputText
                 type="text"
                 (input)="dt.filter($any($event.target)?.value, 'order', 'contains')"
@@ -149,11 +141,11 @@
               >
               </td>
               <td style="text-align:center">{{list.type}}</td>
-              <td>{{list.order}}</td>
-              <td>{{list.barcode}}</td>
-              <td>{{list.recipient}}</td>
-              <td>{{list.address}}</td>
-              <td>{{list.last_operattr}}</td>
+              <td width="15%">{{list.order}}</td>
+              <td width="15%">{{list.barcode}}</td>
+              <td width="15%">{{list.recipient}}</td>
+              <td width="15%">{{list.address}}</td>
+              <td width="15%">{{list.last_operattr}}</td>
               <td style="text-align:center">
                 <button
                   pButton

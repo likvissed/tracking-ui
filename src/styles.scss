@@ -126,6 +126,8 @@ th, td {
   &.status-0 {
     // background-color: var(--cyan-100);
     // color: var(--cyan-800);
+    align-items: center;
+
   }
 }
 
@@ -162,6 +164,19 @@ th, td {
   // width: 350px !important;
   font-size: 14px;
 }
+
+// p-toast
+// :host ::ng-deep .custom-toast .ui-toast-message {
+//   font-size: 14px;
+//   color: #ffffff;
+//   background: #FC466B;
+//   background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);
+//   background: linear-gradient(to right, #3F5EFB, #FC466B);
+//   }
+// :host ::ng-deep .custom-toast .ui-toast-close-icon {
+//   font-size: 14px;
+//   color: #ffffff;
+// }
 
 // ----------------------------Шапка, навигация и футер---------------------------------------
 
