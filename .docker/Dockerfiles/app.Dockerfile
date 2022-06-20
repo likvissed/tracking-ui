@@ -9,7 +9,7 @@ WORKDIR ${APP_ROOT}
 # Install angular-cli
 RUN yarn global add @angular/cli@${NG_CLI_VERSION}
 
-COPY package.json yarn.lock .
+COPY package.json yarn.lock ./
 RUN yarn
 
 COPY . .
