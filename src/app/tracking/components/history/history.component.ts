@@ -41,8 +41,4 @@ export class HistoryComponent implements OnInit, AfterViewInit {
 
   }
 
-  selectProduct() {
-    this.ref.close();
-}
-
 }

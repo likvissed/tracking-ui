@@ -1,3 +1,4 @@
+import { AlertEmailComponent } from './../alert-email/alert-email.component';
 import { HistoryComponent } from './../history/history.component';
 import { Observable } from 'rxjs';
 import { getListsAction } from './../../store/actions/get_lists.action';
@@ -104,6 +105,17 @@ export class ListComponent implements OnInit, AfterViewInit {
       },
       header: 'История перемещений',
       width: '70%'
+    });
+  }
+
+  onShowAlert(id: number) {
+    const ref = this.dialogService.open(AlertEmailComponent, {
+      data: {
+        id: id,
+        params: this.getParams(1, 15)
+      },
+      header: 'Уведомления по почте',
+      width: '30%'
     });
   }
 

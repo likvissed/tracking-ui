@@ -1,0 +1,44 @@
+
+
+<div *ngIf="present_email">
+
+  <div class="field-radiobutton">
+    <p-radioButton name="guard" value="delivery_one" [(ngModel)]="selected_delivery" inputId="delivery_one"></p-radioButton>
+    <label for="delivery_one" class="labelDevidery"> Оповестить о доставке</label>
+  </div>
+
+  <div class="field-radiobutton">
+    <p-radioButton name="guard" value="delivery_every" [(ngModel)]="selected_delivery" inputId="delivery_every"></p-radioButton>
+    <label for="delivery_every" class="labelDevidery"> Отслеживать </label>
+
+    <div *ngIf="selected_delivery ===  'delivery_every'">
+      <p-message severity="warn" text="Внимание! При данном выборе будет приходить много лишней информации" class="p-mr-2"></p-message>
+    </div>
+  </div>
+
+  <div class="field-radiobutton">
+    <p-radioButton name="guard" value="delivery_delete" [(ngModel)]="selected_delivery" inputId="delivery_delete"></p-radioButton>
+    <label for="delivery_delete" class="labelDevidery"> Отменить все оповещения </label>
+  </div>
+
+</div>
+
+<div class="flex justify-content-end mt-3">
+  <p-button
+    label="Сохранить"
+    icon="mdi mdi-loading mdi-spin mdi-18px"
+    class="mr-2"
+    styleClass="p-button-outlined p-button-primary"
+    [disabled]="selected_delivery === ''"
+    (click)="onSave()"
+  ></p-button>
+
+  <button
+    pButton
+    pRipple
+    type="button"
+    label="Отмена"
+    class="p-button-text p-button-plain ml-2"
+    (click)="onClose()"
+  ></button>
+</div>

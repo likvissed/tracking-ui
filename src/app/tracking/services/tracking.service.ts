@@ -20,4 +20,12 @@ export class TrackingService {
 
     return this.http.get(`${url}?id=${id}`)
   }
+
+  sentDeliveryEmail(data: any) {
+    const url = `${environment.apiUrl}/email_delivery`;
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+
+    return this.http.put(url, data , { headers })
+  }
 }

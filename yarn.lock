@@ -5286,6 +5286,11 @@ pretty-bytes@^5.3.0:
   resolved "https://nexus.***REMOVED***/repository/npm/pretty-bytes/-/pretty-bytes-5.6.0.tgz#356256f643804773c82f64723fe78c92c62beaeb"
   integrity sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==
 
+primeflex@^3.2.1:
+  version "3.2.1"
+  resolved "https://nexus.***REMOVED***/repository/npm/primeflex/-/primeflex-3.2.1.tgz#dc557b7e895dd0496a3681fb0d8841d2ddca5abf"
+  integrity sha512-sGDJ4mh2fG19xa1yc4IPGSQ8MUMyu5nU+tYnl27AFuFHhX8XwEA7fWCtWyBbclclVhXtre+Kf9WobWPnfxWAEQ==
+
 primeicons@^5.0.0:
   version "5.0.0"
   resolved "https://nexus.***REMOVED***/repository/npm/primeicons/-/primeicons-5.0.0.tgz#73a0b6028a77c58a9eeb331ad13aaf085e8451ee"

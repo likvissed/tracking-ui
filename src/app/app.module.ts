@@ -29,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DialogService } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { MessageService } from 'primeng/api';
       multi: true
     },
     DialogService,
-    MessageService
+    MessageService,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })

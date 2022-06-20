@@ -31,6 +31,7 @@
               <th width="15%"> Адрес получучателя </th>
               <th width="15%"> Последнее действие</th>
               <th width="1%"></th>
+              <th></th>
           </tr>
 
 
@@ -127,6 +128,7 @@
               >
             </th>
             <th></th>
+            <th></th>
 
           </tr>
 
@@ -141,22 +143,34 @@
               >
               </td>
               <td style="text-align:center">{{list.type}}</td>
-              <td width="15%">{{list.order}}</td>
-              <td width="15%">{{list.barcode}}</td>
-              <td width="15%">{{list.recipient}}</td>
+              <td style="text-align:center" width="15%">{{list.order}}</td>
+              <td style="text-align:center" width="15%">{{list.barcode}}</td>
+              <td style="text-align:center" width="15%">{{list.recipient}}</td>
               <td width="15%">{{list.address}}</td>
-              <td width="15%">{{list.last_operattr}}</td>
+              <td width="20%">{{list.last_operattr}}</td>
               <td style="text-align:center">
                 <button
                   pButton
                   pRipple type="button"
                   icon="pi pi-eye"
                   (click)="onShowHistory(list.id)"
-                  class="p-button-rounded p-button-text"
+                  class="p-button-info p-button-outlined"
                   pTooltip="Посмотреть все действия"
                   tooltipPosition="top"
                 ></button>
             </td>
+            <td style="text-align:center">
+              <button
+                *ngIf="list.delivered === 0"
+                pButton
+                pRipple type="button"
+                icon="pi pi-bell"
+                (click)="onShowAlert(list.id)"
+                class="p-button-warning p-button-outlined "
+                pTooltip="Уведомлять об изменениях"
+                tooltipPosition="top"
+              ></button>
+          </td>
 
           </tr>
       </ng-template>
@@ -169,6 +183,5 @@
     </p-table>
 
   </div>
-
 
 </div>

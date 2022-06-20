@@ -1,3 +1,4 @@
+import { updateDeliveryAction, updateDeliveryFailureAction, updateDeliverySuccessAction } from './actions/update-delivery.action';
 import { getListsAction, getListsSuccessAction, getListsFailureAction } from './actions/get_lists.action';
 import { Action, createReducer, on } from "@ngrx/store"
 import { getHistoryFailureAction, getHistorySuccessAction, getHistoryAction } from './actions/get-history.action';
@@ -41,6 +42,22 @@ const trackingReducer = createReducer(
     histories: action.response,
   })),
   on(getHistoryFailureAction, (state, action): any => ({
+    ...state,
+    isSubmitting: false,
+    validationsErrors: action.error
+  })),
+
+  on(updateDeliveryAction, (state): any => ({
+    ...state,
+    isSubmitting: true,
+    validationsErrors: null
+  })),
+  on(updateDeliverySuccessAction, (state, action): any => ({
+    ...state,
+    isSubmitting: false,
+    response: action.response,
+  })),
+  on(updateDeliveryFailureAction, (state, action): any => ({
     ...state,
     isSubmitting: false,
     validationsErrors: action.error

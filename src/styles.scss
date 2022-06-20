@@ -73,7 +73,7 @@ html * {
 body {
   margin: 0;
   margin-bottom: 90px;
-  overflow-y: scroll;
+  // overflow-y: scroll;
 }
 
 footer {
@@ -177,6 +177,12 @@ th, td {
 //   font-size: 14px;
 //   color: #ffffff;
 // }
+
+.field-radiobutton {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
 
 // ----------------------------Шапка, навигация и футер---------------------------------------
 

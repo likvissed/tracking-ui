@@ -1,3 +1,4 @@
+import { AlertEmailComponent } from './components/alert-email/alert-email.component';
 import { GetHistoryEffect } from './store/effects/get-history.effect';
 import { HistoryComponent } from './components/history/history.component';
 import { NameForStatusPipe } from './../shared/pipes/name-for-status.pipe';
@@ -17,6 +18,7 @@ import { ListComponent } from './components/list/list.component';
 import { AuthCenterGuard } from '@iss/ng-auth-center';
 import { reducers } from './store/reducers';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UpdateDeliveryEffect } from './store/effects/update-delivery.effect';
 
 const routes: Routes = [
   {
@@ -32,6 +34,7 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
+    FormsModule,
 
     PrimengModule,
 
@@ -39,14 +42,16 @@ const routes: Routes = [
     EffectsModule.forFeature(
       [
         GetListsEffect,
-        GetHistoryEffect
+        GetHistoryEffect,
+        UpdateDeliveryEffect
       ]
     ),
   ],
   declarations: [
     ListComponent,
     NameForStatusPipe,
-    HistoryComponent
+    HistoryComponent,
+    AlertEmailComponent
   ],
   providers: [
     TrackingService

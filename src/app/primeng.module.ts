@@ -13,7 +13,9 @@ import { TimelineModule } from 'primeng/timeline';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
-
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 const modules: any[] = [
   ButtonModule,
@@ -28,7 +30,10 @@ const modules: any[] = [
   TimelineModule,
   MessagesModule,
   MessageModule,
-  ToastModule
+  ToastModule,
+  ConfirmDialogModule,
+  DialogModule,
+  RadioButtonModule
 
 ];
 

@@ -6,7 +6,7 @@
       <a routerLink="/" class="navbar-brand"> Сервис отслеживания почтовых отправлений </a>
     </div>
 
-    <form class="d-flex">
+    <form class="d-flex" *ngIf="isAuthenticated">
       <span class="fio_user"> {{ fio_initials }} </span>
 
       <p-button
@@ -17,10 +17,9 @@
     </form>
   </div>
 </nav>
-<p-menubar [model]="items">
-</p-menubar>
 
-<p-toast [style]="{'font-size': '14px'}" class="custom-toast" position="top-right"></p-toast>
+<p-menubar [model]="items" *ngIf="isAuthenticated">
+</p-menubar>
 
 
 <router-outlet></router-outlet>
