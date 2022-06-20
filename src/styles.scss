@@ -124,10 +124,13 @@ th, td {
   font-size: 75%;
 
   &.status-0 {
-    // background-color: var(--cyan-100);
-    // color: var(--cyan-800);
-    align-items: center;
+    background-color: var(--cyan-100);
+    color: var(--cyan-800);
+  }
 
+  &.status-1 {
+    background-color: var(--green-100);
+    color: var(--green-800);
   }
 }
 
