@@ -15,7 +15,7 @@ x-args: &args
     NODE_MAJOR: 16
     APP_ROOT: /app
     NG_CLI_VERSION: v13-lts
-    ENVIRONMENT: development
+    ENVIRONMENT: production
     APP_HOSTNAME: post-tracking
 
 x-syslog-driver: &syslog-driver
