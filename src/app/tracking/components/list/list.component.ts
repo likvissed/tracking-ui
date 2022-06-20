@@ -17,7 +17,6 @@ import { DialogService } from 'primeng/dynamicdialog';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit, AfterViewInit {
-  @Output() tableChanged = new EventEmitter<LazyLoadEvent>();
   @ViewChild('dt') table!: Table;
   totalRecords!: number;
 
@@ -29,10 +28,9 @@ export class ListComponent implements OnInit, AfterViewInit {
     types: [],
     statuses: []
   }
+
   user_is_admin!: boolean;
   isSubmitting$!: Observable<boolean>
-
-  // params!: Map<any, any>;
 
   constructor(
     private authHelper: AuthHelper,
@@ -85,10 +83,11 @@ export class ListComponent implements OnInit, AfterViewInit {
   }
 
   loadData(event: any) {
-    if (JSON.stringify(event.filters) === JSON.stringify({})) {
+    // Удаляет старые фильтрв
+    // if (JSON.stringify(event.filters) == JSON.stringify({})) {
       for (var member in this.selected) delete this.selected[member];
-    }
 
+    // Назначает новый фильтр
     if (event && event.filters) {
       Object.keys(event.filters).forEach(property => {
         this.selected[property] = event.filters[property].value;
