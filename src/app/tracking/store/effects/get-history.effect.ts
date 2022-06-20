@@ -20,10 +20,8 @@ export class GetHistoryEffect {
     this.actions$.pipe(
       ofType(getHistoryAction),
       switchMap(({id}) => {
-        console.log('EFFECT id', id);
         return this.trackingService.getHistoryTrackings(id).pipe(
           map((response: any) => {
-            console.log('get history Success:', response);
             return getHistorySuccessAction({response});
           }),
 

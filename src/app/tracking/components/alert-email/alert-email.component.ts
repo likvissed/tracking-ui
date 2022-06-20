@@ -37,6 +37,7 @@ export class AlertEmailComponent implements OnInit {
     }
 
     this.store.dispatch(updateDeliveryAction({data: request, params: this.config.data?.params}))
+    this.ref.close(this.selected_delivery);
   }
 
   onClose() {

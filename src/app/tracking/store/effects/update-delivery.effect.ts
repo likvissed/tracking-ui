@@ -9,7 +9,6 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { MessageService } from 'primeng/api';
-import { DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Injectable()
 export class UpdateDeliveryEffect {
@@ -27,12 +26,11 @@ export class UpdateDeliveryEffect {
         return this.trackingService.sentDeliveryEmail(data).pipe(
           map((response: any) => {
             this.messageService.add({severity: 'success', summary: 'Успешно', detail: response.result });
-            // this.ref.close();
+
           }),
-          switchMap((response: any) => [
-            updateDeliverySuccessAction({response}),
-            getListsAction(params)
-          ]),
+          map((response: any) => {
+            return updateDeliverySuccessAction({response});
+          }),
 
           catchError((errorResponse: HttpErrorResponse) => of(
             updateDeliveryFailureAction({error: errorResponse.error.message})

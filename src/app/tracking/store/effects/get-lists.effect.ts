@@ -19,10 +19,8 @@ export class GetListsEffect {
     this.actions$.pipe(
       ofType(getListsAction),
       switchMap((value) => {
-        console.log('EFFECT', value);
         return this.trackingService.getListTrackings(value.data).pipe(
           map((response: any) => {
-            console.log('get lists Success:', response);
             return getListsSuccessAction({response});
           }),
 

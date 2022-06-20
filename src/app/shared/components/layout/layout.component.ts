@@ -21,8 +21,6 @@ export class LayoutComponent implements OnInit {
   items!: MenuItem[];
 
   ngOnInit() {
-    console.log('JWT:', this.authHelper.getJwtPayload());
-
     this.items = [
       {
         label: "Треки",

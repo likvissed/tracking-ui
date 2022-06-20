@@ -117,6 +117,11 @@ export class ListComponent implements OnInit, AfterViewInit {
       header: 'Уведомления по почте',
       width: '30%'
     });
+
+    ref.onClose.subscribe((selected: any) => {
+      // console.log('selected', selected);
+
+		});
   }
 
 }

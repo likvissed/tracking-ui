@@ -1,6 +1,6 @@
 
 
-<div *ngIf="present_email">
+<div *ngIf="present_email; else emptyEmail">
 
   <div class="field-radiobutton">
     <p-radioButton name="guard" value="delivery_one" [(ngModel)]="selected_delivery" inputId="delivery_one"></p-radioButton>
@@ -42,3 +42,8 @@
     (click)="onClose()"
   ></button>
 </div>
+
+
+<ng-template #emptyEmail>
+  <div class="text-center"> Необходимо зарегистрировать электронную почту для получения уведомлений </div>
+</ng-template>

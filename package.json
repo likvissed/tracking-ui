@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "config": "ts-node ./scripts/setenv.ts",
+    "start-dev": "yarn run config && ng serve --host 0.0.0.0 --disable-host-check --ssl=true --ssl-cert=/app/.docker/tls/***REMOVED***.crt --ssl-key=/app/.docker/tls/***REMOVED***.key"
   },
   "private": true,
   "dependencies": {
@@ -27,12 +29,15 @@
     "@ngrx/router-store": "^13.2.0",
     "@ngrx/store": "^13.2.0",
     "@ngrx/store-devtools": "^13.2.0",
+    "dotenv": "^16.0.1",
     "font-awesome": "^4.7.0",
     "primeflex": "^3.2.1",
     "primeicons": "^5.0.0",
     "primeng": "13.3.0",
     "rxjs": "~7.5.0",
+    "ts-node": "^10.8.1",
     "tslib": "^2.3.0",
+    "yargs": "^17.5.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
