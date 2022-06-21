@@ -40,7 +40,7 @@ x-common: &common
   tty: true
 
 x-ui: &app
-  image: ${CI_REGISTRY_IMAGE}/post-tracking-ui--production-app
+  image: ${CI_REGISTRY_IMAGE}/post-tracking-ui--production--app
   build:
     <<: *common-labels
     <<: *args
@@ -55,9 +55,9 @@ x-frontend: &frontend
   <<: *common
 
 services:
-  post-tracking-ui--production:
+  post-tracking-ui--production--app:
     <<: *frontend
-    container_name: post-tracking-ui-app--production
+    container_name: post-tracking-ui--production--app
     mac_address: ***REMOVED***
     networks:
       macvlan:
