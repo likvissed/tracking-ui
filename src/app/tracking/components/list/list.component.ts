@@ -70,7 +70,6 @@ export class ListComponent implements OnInit, AfterViewInit {
   loadLists() {
     this.store.pipe(select(allListsSelector))
       .subscribe((response: any) => {
-        console.log('list response', response);
         if (response) {
           this.lists = response.lists;
 
@@ -103,7 +102,8 @@ export class ListComponent implements OnInit, AfterViewInit {
         id: id
       },
       header: 'История перемещений',
-      width: '70%'
+      width: '70%',
+      dismissableMask: true
     });
   }
 
