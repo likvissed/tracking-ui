@@ -22,7 +22,7 @@ x-syslog-driver: &syslog-driver
   logging:
     driver: syslog
     options:
-      syslog-address: "udp://rsyslog:514"
+      syslog-address: "${RSYSLOG_URL}"
       tag: "{{.Name}}/{{.ID}}"
 
 x-jsonlog-driver: &jsonlog-driver
@@ -55,14 +55,9 @@ x-frontend: &frontend
   <<: *common
 
 services:
-  tracking-ui-runner--production:
+  post-tracking-ui--production:
     <<: *frontend
-    container_name: tracking-ui-runner--production
-    command: /bin/bash
-
-  tracking-ui--production:
-    <<: *frontend
-    container_name: tracking-ui-app--production
+    container_name: post-tracking-ui-app--production
     mac_address: ***REMOVED***
     networks:
       macvlan:
@@ -73,7 +68,6 @@ services:
           memory: 64mb
         limits:
           memory: 128mb
-
 
 networks:
   macvlan:

@@ -4,7 +4,7 @@ docker-build-production:
   stage: build
   before_script:
     - mkdir -p ~/.ssh
-    - cp $ID_RSA ~/.ssh/id_ed25519
+    - cp $DEPLOY_KEY ~/.ssh/id_ed25519
     - chmod -R 700 ~/.ssh
     - ssh-keyscan $DEPLOY_SERVER >> ~/.ssh/known_hosts
     - ssh-keyscan $(getent hosts $DEPLOY_SERVER | cut -d' ' -f1) >> ~/.ssh/known_hosts
