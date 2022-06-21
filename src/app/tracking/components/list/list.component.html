@@ -23,11 +23,11 @@
       <ng-template pTemplate="header" let-column>
           <tr>
               <th width="1%"> № </th>
-              <th width="5%"> Статус </th>
-              <th width="5%"> Тип отправления</th>
-              <th width="15%"> Исходящий №</th>
-              <th width="15%"> Трек</th>
-              <th width="15%"> Получатель</th>
+              <th width="5%" style="text-align:center"> Статус </th>
+              <th width="5%" style="text-align:center"> Тип отправления</th>
+              <th width="15%" style="text-align:center"> Исходящий №</th>
+              <th width="15%" style="text-align:center"> Трек</th>
+              <th width="15%" style="text-align:center"> Получатель</th>
               <th width="15%"> Адрес получучателя </th>
               <th width="15%"> Последнее действие</th>
               <th width="1%"></th>
@@ -38,7 +38,7 @@
           <tr>
             <th>
             </th>
-            <th>
+            <th width="15%">
               <p-dropdown
                 *ngIf="user_is_admin"
 
