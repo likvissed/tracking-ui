@@ -70,7 +70,7 @@ export class ListComponent implements OnInit, AfterViewInit {
   loadLists() {
     this.store.pipe(select(allListsSelector))
       .subscribe((response: any) => {
-
+        console.log('list response', response);
         if (response) {
           this.lists = response.lists;
 
