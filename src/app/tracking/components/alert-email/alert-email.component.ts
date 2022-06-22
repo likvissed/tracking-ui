@@ -24,6 +24,8 @@ export class AlertEmailComponent implements OnInit {
     if (this.authHelper.getJwtPayload()['email']) {
       this.present_email = true;
     }
+
+    this.selected_delivery = this.config.data?.selected;
   }
 
   onSave() {

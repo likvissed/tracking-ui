@@ -29,6 +29,10 @@ export class ListComponent implements OnInit, AfterViewInit {
     statuses: []
   }
 
+
+  archive = false;
+  // selectedArchive: string[] = ['false' ,'true'];
+
   user_is_admin!: boolean;
   isSubmitting$!: Observable<boolean>
 
@@ -107,19 +111,19 @@ export class ListComponent implements OnInit, AfterViewInit {
     });
   }
 
-  onShowAlert(id: number) {
+  onShowAlert(id: number, selected?: string) {
     const ref = this.dialogService.open(AlertEmailComponent, {
       data: {
         id: id,
-        params: this.getParams(1, 15)
+        params: this.getParams(1, 15),
+        selected: selected
       },
       header: 'Уведомления по почте',
       width: '30%'
     });
 
-    ref.onClose.subscribe((selected: any) => {
-      // console.log('selected', selected);
-
+    ref.onClose.subscribe(() => {
+      this.initializeValues();
 		});
   }
 

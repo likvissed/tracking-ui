@@ -17,7 +17,7 @@
   </div>
 
   <div class="field-radiobutton">
-    <p-radioButton name="guard" value="delivery_delete" [(ngModel)]="selected_delivery" inputId="delivery_delete"></p-radioButton>
+    <p-radioButton name="guard" value="delivery_delete" [(ngModel)]="selected_delivery" inputId="delivery_delete" [disabled]="selected_delivery == '' "></p-radioButton>
     <label for="delivery_delete" class="labelDevidery"> Отменить все оповещения </label>
   </div>
 

@@ -18,6 +18,10 @@
 
       <ng-template pTemplate="caption">
         Список треков
+
+        <span class="flex justify-content-end border-round m-2">
+          <p-checkbox name="groupname" value="val1" label="Архив" [(ngModel)]="archive"></p-checkbox>
+       </span>
       </ng-template>
 
       <ng-template pTemplate="header" let-column>
@@ -28,7 +32,7 @@
               <th width="15%" style="text-align:center"> Исходящий №</th>
               <th width="15%" style="text-align:center"> Трек</th>
               <th width="15%" style="text-align:center"> Получатель</th>
-              <th width="15%"> Адрес получучателя </th>
+              <th width="15%"> Адрес получателя </th>
               <th width="15%"> Последнее действие</th>
               <th width="1%"></th>
               <th></th>
@@ -166,7 +170,7 @@
                 pButton
                 pRipple type="button"
                 icon="pi pi-bell"
-                (click)="onShowAlert(list.id)"
+                (click)="onShowAlert(list.id, list.selected_delivery)"
                 class="p-button-warning p-button-outlined "
                 pTooltip="Уведомлять об изменениях"
                 tooltipPosition="top"
