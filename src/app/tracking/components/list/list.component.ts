@@ -18,6 +18,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 })
 export class ListComponent implements OnInit, AfterViewInit {
   @ViewChild('dt') table!: Table;
+
   totalRecords!: number;
 
   lists = [];
@@ -124,6 +125,9 @@ export class ListComponent implements OnInit, AfterViewInit {
 
     ref.onClose.subscribe(() => {
       this.initializeValues();
+
+      this.table.ngOnInit();
+      // this.table.first = 1;
 		});
   }
 
