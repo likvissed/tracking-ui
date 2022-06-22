@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 import { ListComponent } from './components/list/list.component';
 
 import { AuthCenterGuard } from '@iss/ng-auth-center';
-import { reducers } from './store/reducers';
+import { trackingReducer } from './store/reducers';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UpdateDeliveryEffect } from './store/effects/update-delivery.effect';
 
@@ -38,7 +38,7 @@ const routes: Routes = [
 
     PrimengModule,
 
-    StoreModule.forFeature('list', reducers),
+    StoreModule.forFeature('tracking', trackingReducer),
     EffectsModule.forFeature(
       [
         GetListsEffect,

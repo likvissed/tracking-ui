@@ -12,13 +12,14 @@ const initialState: TrackingStateInterface = {
   histories: null
 }
 
-const trackingReducer = createReducer(
+const reducer = createReducer(
   initialState,
 
   on(getListsAction, (state): TrackingStateInterface => ({
     ...state,
     isSubmitting: true,
-    validationsErrors: null
+    validationsErrors: null,
+    lists: null
   })),
   on(getListsSuccessAction, (state, action): any => ({
     ...state,
@@ -65,6 +66,6 @@ const trackingReducer = createReducer(
   }))
 )
 
-export function reducers(state: TrackingStateInterface, action: Action) {
-  return trackingReducer(state, action);
+export function trackingReducer(state: TrackingStateInterface, action: Action) {
+  return reducer(state, action)
 }

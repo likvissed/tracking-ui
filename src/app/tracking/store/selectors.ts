@@ -2,12 +2,12 @@ import { TrackingStateInterface } from './../types/tracking-state.interface';
 
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 
-export const listFeatureSelector = createFeatureSelector<
+export const trackingFeatureSelector = createFeatureSelector<
  TrackingStateInterface
->('list')
+>('tracking')
 
 export const allListsSelector = createSelector(
-  listFeatureSelector,
+  trackingFeatureSelector,
   (trackingState: TrackingStateInterface) => {
 
     // console.log('selector', trackingState);
@@ -16,12 +16,12 @@ export const allListsSelector = createSelector(
 )
 
 export const isSubmittingSelector = createSelector(
-  listFeatureSelector,
+  trackingFeatureSelector,
   (trackingState: TrackingStateInterface) => trackingState.isSubmitting
 )
 
 
 export const idHistorySelector = createSelector(
-  listFeatureSelector,
+  trackingFeatureSelector,
   (trackingState: TrackingStateInterface) => trackingState.histories
 )

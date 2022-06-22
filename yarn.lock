@@ -1323,10 +1323,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/store-devtools@^13.2.0":
-  version "13.2.0"
-  resolved "https://nexus.***REMOVED***/repository/npm/@ngrx/store-devtools/-/store-devtools-13.2.0.tgz#69193e32aee141397d7d2c11c43278e3fa5191e7"
-  integrity sha512-k1NifkR/4OjbjAxauVZODCsgs2owMJXvEX2XoTWth7zscbHE8L3pLd0k1ox5pMPUEqWIptWTaJDzYqnQSoJaaw==
+"@ngrx/store-devtools@13.1.0":
+  version "13.1.0"
+  resolved "https://nexus.***REMOVED***/repository/npm/@ngrx/store-devtools/-/store-devtools-13.1.0.tgz#2bea7d6e4e0e85f23062ff07068e4640f59abf70"
+  integrity sha512-HAF2q1qk7n0Q3rkHncdXIokGXbPFKWwmfhGFS9pnq63FScgPgHjNXSlPmwgycb+LqDvDR4C8f1HSbPhOb6I29w==
   dependencies:
     tslib "^2.0.0"
 

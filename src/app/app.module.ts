@@ -18,7 +18,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
@@ -31,7 +31,6 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,21 +40,22 @@ import { ConfirmationService } from 'primeng/api';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
 
     HttpClientModule,
-    AuthCenterModule.forRoot(environment.auth),
     AppRoutingModule,
-
-    PrimengModule,
-    // ButtonModule, MenubarModule, MenuModule, TableModule,
-    TrackingModule,
 
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
-    })
+    }),
+
+    AuthCenterModule.forRoot(environment.auth),
+
+    PrimengModule,
+    TrackingModule
 
   ],
   providers: [
