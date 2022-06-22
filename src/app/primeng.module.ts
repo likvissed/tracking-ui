@@ -17,6 +17,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { CheckboxModule } from 'primeng/checkbox';
+import { CardModule } from 'primeng/card';
+import { ImageModule } from 'primeng/image';
 
 const modules: any[] = [
   ButtonModule,
@@ -35,7 +37,9 @@ const modules: any[] = [
   ConfirmDialogModule,
   DialogModule,
   RadioButtonModule,
-  CheckboxModule
+  CheckboxModule,
+  CardModule,
+  ImageModule
 
 ];
 

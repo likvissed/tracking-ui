@@ -1,3 +1,4 @@
+import { NotFoundModule } from './shared/modules/not-found/not-found.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthCenterModule } from '@iss/ng-auth-center';
 import { AppRoutingModule } from './app-routing.module';
@@ -55,7 +56,8 @@ import { ConfirmationService } from 'primeng/api';
     AuthCenterModule.forRoot(environment.auth),
 
     PrimengModule,
-    TrackingModule
+    TrackingModule,
+    NotFoundModule
 
   ],
   providers: [
