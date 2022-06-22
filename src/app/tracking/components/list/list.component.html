@@ -20,7 +20,7 @@
         Список треков
 
         <span class="flex justify-content-end border-round m-2">
-          <p-checkbox name="groupname" value="val1" label="Архив" [(ngModel)]="archive"></p-checkbox>
+          <p-checkbox name="archive" [binary]="true" label="Архив" [(ngModel)]="archive" (onChange)="initializeValues()"></p-checkbox>
        </span>
       </ng-template>
 

@@ -31,7 +31,6 @@ export class ListComponent implements OnInit, AfterViewInit {
 
 
   archive = false;
-  // selectedArchive: string[] = ['false' ,'true'];
 
   user_is_admin!: boolean;
   isSubmitting$!: Observable<boolean>
@@ -61,7 +60,8 @@ export class ListComponent implements OnInit, AfterViewInit {
     return {
       page: page,
       size: size,
-      filters: JSON.stringify(this.selected)
+      filters: JSON.stringify(this.selected),
+      archive: this.archive
     };
   }
 
