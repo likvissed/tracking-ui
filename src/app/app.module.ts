@@ -10,7 +10,7 @@ import { environment } from './../environments/environment';
 
 import { TrackingModule } from './tracking/tracking.module'
 
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -31,6 +31,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogService } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
+
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+
+registerLocaleData(localeRu, 'ru');
 
 @NgModule({
   declarations: [
@@ -66,6 +71,7 @@ import { ConfirmationService } from 'primeng/api';
       useClass: ErrorInterceptor,
       multi: true
     },
+    { provide: LOCALE_ID, useValue: 'ru' },
     DialogService,
     MessageService,
     ConfirmationService
