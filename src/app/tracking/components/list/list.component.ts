@@ -30,6 +30,7 @@ export class ListComponent implements OnInit, AfterViewInit {
     statuses: []
   }
 
+  pageIndex = 1;
 
   archive = false;
 
@@ -55,6 +56,10 @@ export class ListComponent implements OnInit, AfterViewInit {
     });
 
     this.initializeValues();
+  }
+
+  paginate(event: any) {
+    this.pageIndex = event.first / event.rows + 1;
   }
 
   getParams(page: number, size: number) {
@@ -123,11 +128,11 @@ export class ListComponent implements OnInit, AfterViewInit {
       width: '30%'
     });
 
-    ref.onClose.subscribe(() => {
-      this.initializeValues();
-
-      this.table.ngOnInit();
-      // this.table.first = 1;
+    ref.onClose.subscribe((value) => {
+      if (value) {
+        this.store.dispatch(getListsAction( { data: this.getParams(this.pageIndex, 15)  }));
+        this.loadLists();
+      }
 		});
   }
 
