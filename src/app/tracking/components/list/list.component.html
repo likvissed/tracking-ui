@@ -5,7 +5,6 @@
       #dt
       *ngIf="lists"
       [value]="lists"
-      [lazy]="true"
       [lazyLoadOnInit]="true"
       (onLazyLoad)="loadData($event)"
       [rows]="15"
