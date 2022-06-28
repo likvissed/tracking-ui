@@ -1,3 +1,4 @@
+import { NotFoundModule } from './shared/modules/not-found/not-found.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthCenterModule } from '@iss/ng-auth-center';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,7 +10,7 @@ import { environment } from './../environments/environment';
 
 import { TrackingModule } from './tracking/tracking.module'
 
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -18,7 +19,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
@@ -31,6 +32,10 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
 
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+
+registerLocaleData(localeRu, 'ru');
 
 @NgModule({
   declarations: [
@@ -41,21 +46,23 @@ import { ConfirmationService } from 'primeng/api';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
 
     HttpClientModule,
-    AuthCenterModule.forRoot(environment.auth),
     AppRoutingModule,
-
-    PrimengModule,
-    // ButtonModule, MenubarModule, MenuModule, TableModule,
-    TrackingModule,
 
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
-    })
+    }),
+
+    AuthCenterModule.forRoot(environment.auth),
+
+    PrimengModule,
+    TrackingModule,
+    NotFoundModule
 
   ],
   providers: [
@@ -64,6 +71,7 @@ import { ConfirmationService } from 'primeng/api';
       useClass: ErrorInterceptor,
       multi: true
     },
+    { provide: LOCALE_ID, useValue: 'ru' },
     DialogService,
     MessageService,
     ConfirmationService

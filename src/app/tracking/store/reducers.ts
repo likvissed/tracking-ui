@@ -1,9 +1,10 @@
+import { TrackingStateInterface } from './../types/tracking-state.interface';
 import { updateDeliveryAction, updateDeliveryFailureAction, updateDeliverySuccessAction } from './actions/update-delivery.action';
 import { getListsAction, getListsSuccessAction, getListsFailureAction } from './actions/get_lists.action';
 import { Action, createReducer, on } from "@ngrx/store"
 import { getHistoryFailureAction, getHistorySuccessAction, getHistoryAction } from './actions/get-history.action';
 
-const initialState: any = {
+const initialState: TrackingStateInterface = {
   isSubmitting: false,
   validationsErrors: null,
   response: null,
@@ -11,13 +12,14 @@ const initialState: any = {
   histories: null
 }
 
-const trackingReducer = createReducer(
+const reducer = createReducer(
   initialState,
 
-  on(getListsAction, (state): any => ({
+  on(getListsAction, (state): TrackingStateInterface => ({
     ...state,
     isSubmitting: true,
-    validationsErrors: null // Удалить ошибки перед новой отправкой на сервер
+    validationsErrors: null,
+    lists: null
   })),
   on(getListsSuccessAction, (state, action): any => ({
     ...state,
@@ -64,6 +66,6 @@ const trackingReducer = createReducer(
   }))
 )
 
-export function reducers(state: any, action: Action) {
-  return trackingReducer(state, action);
+export function trackingReducer(state: TrackingStateInterface, action: Action) {
+  return reducer(state, action)
 }

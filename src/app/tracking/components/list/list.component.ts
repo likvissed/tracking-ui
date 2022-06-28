@@ -18,6 +18,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 })
 export class ListComponent implements OnInit, AfterViewInit {
   @ViewChild('dt') table!: Table;
+
   totalRecords!: number;
 
   lists = [];
@@ -28,6 +29,10 @@ export class ListComponent implements OnInit, AfterViewInit {
     types: [],
     statuses: []
   }
+
+  pageIndex = 1;
+
+  archive = false;
 
   user_is_admin!: boolean;
   isSubmitting$!: Observable<boolean>
@@ -53,11 +58,16 @@ export class ListComponent implements OnInit, AfterViewInit {
     this.initializeValues();
   }
 
+  paginate(event: any) {
+    this.pageIndex = event.first / event.rows + 1;
+  }
+
   getParams(page: number, size: number) {
     return {
       page: page,
       size: size,
-      filters: JSON.stringify(this.selected)
+      filters: JSON.stringify(this.selected),
+      archive: this.archive
     };
   }
 
@@ -70,7 +80,6 @@ export class ListComponent implements OnInit, AfterViewInit {
   loadLists() {
     this.store.pipe(select(allListsSelector))
       .subscribe((response: any) => {
-        console.log('list response', response);
         if (response) {
           this.lists = response.lists;
 
@@ -103,23 +112,27 @@ export class ListComponent implements OnInit, AfterViewInit {
         id: id
       },
       header: 'История перемещений',
-      width: '70%'
+      width: '70%',
+      dismissableMask: true
     });
   }
 
-  onShowAlert(id: number) {
+  onShowAlert(id: number, selected?: string) {
     const ref = this.dialogService.open(AlertEmailComponent, {
       data: {
         id: id,
-        params: this.getParams(1, 15)
+        params: this.getParams(1, 15),
+        selected: selected
       },
       header: 'Уведомления по почте',
       width: '30%'
     });
 
-    ref.onClose.subscribe((selected: any) => {
-      // console.log('selected', selected);
-
+    ref.onClose.subscribe((value) => {
+      if (value) {
+        this.store.dispatch(getListsAction( { data: this.getParams(this.pageIndex, 15)  }));
+        this.loadLists();
+      }
 		});
   }
 

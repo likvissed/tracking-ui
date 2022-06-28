@@ -7,7 +7,7 @@
   <ng-template pTemplate="opposite" let-event>
       {{event.operattr}}
       <br>
-      <small class="p-text-secondary">{{event.operdate | date: 'dd.MM.yyyy hh:mm' : 'Asia/Krasnoyarsk' }}</small>
+      <small class="p-text-secondary">{{event.operdate | date: 'short' }}</small>
   </ng-template>
 </p-timeline>
 

@@ -19,7 +19,7 @@ export class ErrorHandlerService {
 
     switch (error.status) {
       case 422:
-        this.messageService.add({severity: this.str_severity, summary: 'Ошибка загрузки данных с сервера', detail: error.error.message});
+        this.messageService.add({severity: this.str_severity, summary: 'Ошибка загрузки данных с сервера', detail: error.error.error_description});
 
         break;
       case 403:
