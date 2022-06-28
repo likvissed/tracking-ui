@@ -1,0 +1,75 @@
+version: "3.9"
+
+x-common-labels: &common-labels
+  labels:
+    project-name: "tracking-ui"
+    comment: "Система отслеживания почтовых отправлений (frontend)"
+    domain: "staging-post-tracking"
+    environment: "staging"
+    git: "***REMOVED***"
+    maintainer: "***REMOVED***"
+    devops-engineer: "***REMOVED***"
+
+x-args: &args
+  args:
+    NODE_MAJOR: 16
+    APP_ROOT: /app
+    NG_CLI_VERSION: v13-lts
+    ENVIRONMENT: production
+    APP_HOSTNAME: staging-post-tracking
+
+x-syslog-driver: &syslog-driver
+  logging:
+    driver: syslog
+    options:
+      syslog-address: "${RSYSLOG_URL}"
+      tag: "{{.Name}}/{{.ID}}"
+
+x-jsonlog-driver: &jsonlog-driver
+  logging:
+    driver: "json-file"
+
+x-env: &envs
+  environment:
+    - TZ=Asia/Krasnoyarsk
+    - APP_ROOT=/app
+
+x-common: &common
+  restart: unless-stopped
+  stdin_open: true
+  tty: true
+
+x-ui: &app
+  image: ${CI_REGISTRY_IMAGE}/post-tracking-ui--staging--app
+  build:
+    <<: *common-labels
+    <<: *args
+    context: .
+    dockerfile: .docker/Dockerfiles/app.Dockerfile
+
+x-frontend: &frontend
+  <<: *common-labels
+  <<: *syslog-driver
+  <<: *envs
+  <<: *app
+  <<: *common
+
+services:
+  post-tracking-ui--staging--app:
+    <<: *frontend
+    container_name: post-tracking-ui--staging--app
+    mac_address: ***REMOVED***
+    networks:
+      macvlan:
+        ipv4_address: ***REMOVED***
+    deploy:
+      resources:
+        reservations:
+          memory: 64mb
+        limits:
+          memory: 128mb
+
+networks:
+  macvlan:
+    external:
+      name: server-network
