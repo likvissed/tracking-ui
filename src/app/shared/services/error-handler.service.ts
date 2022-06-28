@@ -35,6 +35,10 @@ export class ErrorHandlerService {
         this.messageService.add({severity: this.str_severity, summary: 'Сервер временно недоступен'});
 
         break;
+      default:
+        this.messageService.add({severity: this.str_severity, summary: 'Сервер временно недоступен', detail: error.statusText});
+
+        break;
     }
 
   }
