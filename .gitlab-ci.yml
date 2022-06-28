@@ -34,10 +34,10 @@ docker-build-staging:
     - cp $DOTENV_STAGING .env
   script:
     - export COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1
-    - docker-compose -f docker-compose.prod.yml -p ${CI_PROJECT_NAME}-staging build
-    - docker-compose -f docker-compose.prod.yml -p ${CI_PROJECT_NAME}-staging push
-    - docker-compose -f docker-compose.prod.yml -p ${CI_PROJECT_NAME}-staging -H "ssh://$DEPLOY_USER@$DEPLOY_SERVER" pull
-    - docker-compose -f docker-compose.prod.yml -p ${CI_PROJECT_NAME}-staging -H "ssh://$DEPLOY_USER@$DEPLOY_SERVER" down --remove-orphans
-    - docker-compose -f docker-compose.prod.yml -p ${CI_PROJECT_NAME}-staging -H "ssh://$DEPLOY_USER@$DEPLOY_SERVER" up -d
+    - docker-compose -f docker-compose.staging.yml -p ${CI_PROJECT_NAME}-staging build
+    - docker-compose -f docker-compose.staging.yml -p ${CI_PROJECT_NAME}-staging push
+    - docker-compose -f docker-compose.staging.yml -p ${CI_PROJECT_NAME}-staging -H "ssh://$DEPLOY_USER@$DEPLOY_SERVER" pull
+    - docker-compose -f docker-compose.staging.yml -p ${CI_PROJECT_NAME}-staging -H "ssh://$DEPLOY_USER@$DEPLOY_SERVER" down --remove-orphans
+    - docker-compose -f docker-compose.staging.yml -p ${CI_PROJECT_NAME}-staging -H "ssh://$DEPLOY_USER@$DEPLOY_SERVER" up -d
   only:
     - dockerize
