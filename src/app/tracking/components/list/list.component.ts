@@ -20,6 +20,8 @@ export class ListComponent implements OnInit, AfterViewInit {
   @ViewChild('dt') table!: Table;
 
   totalRecords!: number;
+  allRows: number = 15;
+  recordsFiltered: number = 0;
 
   lists = [];
 
@@ -73,7 +75,7 @@ export class ListComponent implements OnInit, AfterViewInit {
 
   initializeValues() {
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
-    this.store.dispatch(getListsAction( { data: this.getParams(1, 15)  }));
+    this.store.dispatch(getListsAction( { data: this.getParams(1, this.allRows)  }));
     this.loadLists();
   }
 
@@ -87,6 +89,7 @@ export class ListComponent implements OnInit, AfterViewInit {
           this.filters.types = response.data_filters.types;
 
           this.totalRecords = response.total_items;
+          this.recordsFiltered = response.records_filtered;
         }
       });
   }
@@ -102,7 +105,7 @@ export class ListComponent implements OnInit, AfterViewInit {
         this.selected[property] = event.filters[property].value;
       });
 
-      this.store.dispatch(getListsAction( { data: this.getParams((event.first / 15) + 1, event.rows)  }));
+      this.store.dispatch(getListsAction( { data: this.getParams(Math.floor(event.first / this.allRows) + 1, event.rows)  }));
     }
   }
 
@@ -121,7 +124,7 @@ export class ListComponent implements OnInit, AfterViewInit {
     const ref = this.dialogService.open(AlertEmailComponent, {
       data: {
         id: id,
-        params: this.getParams(1, 15),
+        params: this.getParams(1, this.allRows),
         selected: selected
       },
       header: 'Уведомления по почте',
@@ -130,7 +133,7 @@ export class ListComponent implements OnInit, AfterViewInit {
 
     ref.onClose.subscribe((value) => {
       if (value) {
-        this.store.dispatch(getListsAction( { data: this.getParams(this.pageIndex, 15)  }));
+        this.store.dispatch(getListsAction( { data: this.getParams(this.pageIndex, this.allRows)  }));
         this.loadLists();
       }
 		});
