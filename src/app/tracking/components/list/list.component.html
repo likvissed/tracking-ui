@@ -16,7 +16,6 @@
       [loading]="(isSubmitting$ | async)!"
       (onPage)="paginate($event)"
       [pageLinks]="3"
-      [rowsPerPageOptions]="[allRows, 25, 45]"
     >
 
     <ng-template pTemplate="paginatorleft" let-state>
