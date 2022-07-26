@@ -57,6 +57,24 @@
   --pink-700: #a5326b;
   --pink-800: #822854;
   --pink-900: #5e1d3d;
+  --red-100: #fff5f5;
+  --red-200: #fed7d7;
+  --red-300: #feb2b2;
+  --red-400: #fc8181;
+  --red-500: #fa6b6b;
+  --red-600: #e53e3e;
+  --red-700: #c53030;
+  --red-800: #802424;
+  --red-900: #742a2a;
+  --orange-100: #ffe5d0;
+  --orange-200: #fecba1;
+  --orange-300: #feb272;
+  --orange-400: #fd9843;
+  --orange-500: #fd7e14;
+  --orange-600: #ca6510;
+  --orange-700: #984c0c;
+  --orange-800: #653208;
+  --orange-900: #331904;
 }
 
 
@@ -139,8 +157,8 @@ th, td {
   }
 
   &.status-3 {
-    background-color: var(--blue-100);
-    color: var(--blue-800);
+    background-color: var(--red-100);
+    color: var(--red-800);
   }
 }
 
