@@ -1,20 +1,22 @@
 <nav class="navbar">
   <div class="container-fluid">
 
-    <div class="logo">
+    <div class="logo p-col-12 p-md-6">
       <img src="assets/images/logo_iss.png">
       <a routerLink="/" class="navbar-brand"> Сервис отслеживания почтовых отправлений </a>
     </div>
 
-    <form class="d-flex" *ngIf="isAuthenticated">
-      <span class="fio_user"> {{ fio_initials }} </span>
+    <div class="p-col-12 p-md-6">
+      <form class="d-flex" *ngIf="isAuthenticated">
+        <span class="fio_user"> {{ fio_initials }} </span>
 
-      <p-button
-        icon="pi pi-sign-out"
-        styleClass="p-button-text p-button-plain"
-        (click)="logout()"
-      ></p-button>
-    </form>
+        <p-button
+          icon="pi pi-sign-out"
+          styleClass="p-button-text p-button-plain"
+          (click)="logout()"
+        ></p-button>
+      </form>
+    </div>
   </div>
 </nav>
 

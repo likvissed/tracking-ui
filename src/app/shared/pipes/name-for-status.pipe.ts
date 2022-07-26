@@ -9,7 +9,11 @@ export class NameForStatusPipe implements PipeTransform {
       case 0:
         return "Не доставлено";
       case 1:
-        return "Доставлено ";
+        return "Доставлено";
+      case 2:
+        return "Возврат";
+      case 3:
+        return "Возвращено";
     }
 
   }
